@@ -71,7 +71,7 @@ graph TD
 
 ```bash
 git clone https://github.com/sangam962895/SummarAIze.git
-cd SmartDoc-AI
+cd SummarAIze
 ```
 
 ### 2. Create a Virtual Environment
@@ -107,7 +107,7 @@ streamlit run frontend/streamlit_app.py
 
 ## 📽 Demo Video
 
-👉 [Watch the full demo on YouTube](https://www.youtube.com/watch?v=73hCgYMFIDY)
+👉 [Watch the full demo on YouTube](https://youtu.be/kzRCwWFEZGk)
 
 ---
 
@@ -144,16 +144,17 @@ streamlit run frontend/streamlit_app.py
 ## 📸 Screenshots
   **Landing Page**
   
-  <img width="1389" height="677" alt="image" src="https://github.com/user-attachments/assets/24392d07-4cd0-4e46-acdc-e2c3c724cbe4" />
+  <<img width="1198" height="798" alt="image" src="https://github.com/user-attachments/assets/b2c55029-9da2-483c-8ea5-38546330c9b1" />
 
   **Summary**
   
-<img width="1164" height="507" alt="image" src="https://github.com/user-attachments/assets/2392dda3-158b-4d50-987f-f485a29d4990" />
+<img width="1119" height="718" alt="image" src="https://github.com/user-attachments/assets/41a6da75-9f06-421d-af97-c39e88274a74" />
+
 
   
   **Ask Question**
   
- <img width="1443" height="684" alt="image" src="https://github.com/user-attachments/assets/9c698ab1-f970-4e20-a0e5-827c19bde0b2" />
+<img width="1450" height="833" alt="image" src="https://github.com/user-attachments/assets/fc358366-4e88-4352-aa4d-07436fc03ee5" />
 
   
   **Self Evaluation Quiz**
@@ -163,11 +164,13 @@ streamlit run frontend/streamlit_app.py
   
   **Evaluation of Quiz Reasoning**
 
-  <img width="746" height="452" alt="EvaluationOFQuizwithReasoning" src="https://github.com/user-attachments/assets/12e202df-642e-4639-86e9-9cb70270b197" />
+  <img width="1406" height="697" alt="image" src="https://github.com/user-attachments/assets/25616208-6b3d-4f3b-b483-c416cb580a12" />
+
   
   **Self Evaluation Score**
 
-  <img width="1478" height="784" alt="image" src="https://github.com/user-attachments/assets/a247953e-6854-4d80-a605-35b6d6804810" />
+  <img width="1396" height="797" alt="image" src="https://github.com/user-attachments/assets/607ff44d-c4e1-443b-b9e4-7a8cca8430c2" />
+
 
 
 
