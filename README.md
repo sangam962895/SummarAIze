@@ -1,185 +1,207 @@
+<div align="center">
 
-# 🧠 SmartDoc-AI: Smart Assistant for Research Documents
+# 🧠 SmartDoc-AI
+### Smart Assistant for Research Documents
 
-**SmartDoc-AI** is an AI-powered assistant that reads and reasons through your uploaded PDF or TXT documents. It delivers concise summaries, answers deep contextual questions, and challenges your understanding with logic-based evaluations. Designed for researchers, students, and professionals, SmartDoc AI bridges the gap between traditional summarizers and true comprehension — powered by **LangChain**, **FastAPI**, **Streamlit**, and **Groq API**.
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C?style=flat&logo=chainlink&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-LLM%20Inference-F55036?style=flat)
+![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-009688?style=flat)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
----
+**SmartDoc-AI** goes beyond traditional summarizers — it reads, reasons, and challenges your understanding of any research document.
 
-## 🚀 Key Features
+[🎥 Watch Demo](https://youtu.be/kzRCwWFEZGk) · [🐛 Report Bug](https://github.com/sangam962895/SummarAIze/issues) · [✨ Request Feature](https://github.com/sangam962895/SummarAIze/issues)
 
-- 📄 **Document Upload**: Supports `.pdf` and `.txt` formats
-- ✨ **Auto Summary**: Instantly generates a concise summary (≤ 150 words)
-- 🤖 **Ask Anything Mode**: Natural language Q&A with grounded, source-based responses
-- 🧠 **Challenge Me Mode**: Auto-generates logic-based questions and evaluates your answers
-- 🔍 **Justified Answers**: Every response includes a citation or snippet from the document
-- ⚡ **RAG Architecture**: Combines semantic search (FAISS) and fast inference (Groq API)
-- 💡 **Bonus Capabilities**:
-  - 🔁 Context memory for follow-up queries
-  - 🎯 Highlighted text spans in answers for clarity
-
----
-## 📁 Project Structure
-
-```text
-SmartDoc-AI/
-├── backend/
-│   ├── vector_database.py
-│   └── rag_pipeline.py
-├── frontend/
-│   ├── streamlit_app.py
-│   ├── summary.py
-│   ├── ask_questions.py
-│   └── self_eval.py
-├── requirements.txt
-└── .env
-```
-## 🧰 Tech Stack
-
-| Technology       | Role                                             |
-|------------------|--------------------------------------------------|
-| **Streamlit**    | Web-based frontend UI                            |
-| **LangChain**    | Orchestration of retrieval and LLM prompting     |
-| **Groq API**     | High-speed inference using Mixtral or LLaMA      |
-| **PyMuPDF**      | PDF parsing and text extraction                  |
-| **FAISS**        | Vector similarity search for document chunks     |
+</div>
 
 ---
 
+## 📌 Table of Contents
 
+- [About](#-about)
+- [Key Features](#-key-features)
+- [Architecture](#-architecture)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Screenshots](#-screenshots)
+- [Roadmap](#-roadmap)
+- [Author](#-author)
 
+---
 
-## 🧠 Architecture Overview
+## 🎯 About
+
+Most document tools just search for keywords. **SmartDoc-AI** actually understands your content.
+
+Built for researchers, students, and professionals who work with dense technical documents — it combines **Retrieval-Augmented Generation (RAG)**, semantic search, and fast LLM inference to deliver accurate, reference-backed answers with zero hallucinations.
+
+> Every response is grounded in your document. No guessing. No made-up facts.
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---|---|
+| 📄 **Auto Summary** | Instant concise summary (≤ 150 words) of any uploaded document |
+| 💬 **Ask Anything** | Natural language Q&A with answers cited directly from the document |
+| 🧠 **Challenge Me** | AI generates logic-based questions and evaluates your reasoning — not just right/wrong, but *why* |
+| 🔍 **Justified Answers** | Every response includes a source snippet or citation from the document |
+| 🔁 **Context Memory** | Follow-up queries maintain conversation context |
+| ⚡ **Fast Inference** | Powered by Groq API for near-instant responses |
+
+---
+
+## 🏗 Architecture
 
 ```mermaid
 graph TD
-    A[User Uploads Document] --> B[Text Extraction using PyMuPDF]
-    B --> C[Chunking via LangChain]
-    C --> D[Embedding and Indexing in FAISS]
-    D --> E[User Question or Challenge Request]
-    E --> F[Prompt Generation via LangChain]
-    F --> G[LLM Response via Groq API]
-    G --> H[Answer with Justification and Snippet]
+    A([User Uploads Document]) --> B[Text Extraction\nPyMuPDF]
+    B --> C[Chunking\nLangChain]
+    C --> D[(FAISS\nVector Index)]
+    D --> E{User Action}
+    E -->|Ask question| F[Semantic Search]
+    E -->|Challenge Me| G[Question Generation]
+    F --> H[Prompt Builder\nLangChain]
+    G --> H
+    H --> I[LLM Inference\nGroq API]
+    I --> J([Answer + Justification\nwith Document Snippet])
 ```
-
 
 ---
 
+## 🧰 Tech Stack
 
-## 🛠️ Setup Instructions
+| Technology | Role |
+|---|---|
+| **Streamlit** | Web-based frontend UI |
+| **LangChain** | RAG orchestration and prompt engineering |
+| **Groq API** | High-speed LLM inference — Mixtral / LLaMA |
+| **FAISS** | Vector similarity search for document chunks |
+| **PyMuPDF** | PDF parsing and text extraction |
+| **FastAPI** | Backend API layer |
 
-### 1. Clone the Repository
+---
 
+## 📁 Project Structure
+
+```
+SmartDoc-AI/
+├── backend/
+│   ├── vector_database.py      # FAISS indexing and embedding logic
+│   └── rag_pipeline.py         # RAG chain setup and retrieval
+├── frontend/
+│   ├── streamlit_app.py        # Main app entry point
+│   ├── summary.py              # Auto summary module
+│   ├── ask_questions.py        # Ask Anything mode
+│   └── self_eval.py            # Challenge Me mode
+├── requirements.txt
+└── .env                        # API keys (not committed)
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.10+
+- A [Groq API key](https://console.groq.com/) (free tier available)
+
+### Installation
+
+**1. Clone the repository**
 ```bash
 git clone https://github.com/sangam962895/SummarAIze.git
 cd SummarAIze
 ```
 
-### 2. Create a Virtual Environment
-
+**2. Create and activate a virtual environment**
 ```bash
 python -m venv venv
-source venv/bin/activate  # For Windows: venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
+
+# On Windows
+venv\Scripts\activate
 ```
 
-### 3. Install Requirements
-
+**3. Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment
+**4. Set up environment variables**
 
-Create a `.env` file and add your API key:
-
+Create a `.env` file in the root directory:
 ```env
-GROQ_API_KEY=your_groq_api_key
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
-### 5. Run the Application
-
+**5. Run the app**
 ```bash
-
-# Start Streamlit frontend (in separate terminal)
 streamlit run frontend/streamlit_app.py
 ```
 
----
-
-## 📽 Demo Video
-
-👉 [Watch the full demo on YouTube](https://youtu.be/kzRCwWFEZGk)
+Open your browser at `http://localhost:8501` 🎉
 
 ---
-
-## 🌟 What Makes SmartDoc-AI Unique?
-
-- ✅ Built specifically for long research and technical documents
-- ✅ Uses RAG for accurate, reference-backed answers
-- ✅ Provides comprehension-level challenge questions
-- ✅ Fast response with Groq’s cutting-edge LLM support
-- ✅ Modular architecture for easy customization and extension
-
----
-
-## 🚧 Future Roadmap
-
-- 📄 Support `.docx`, scanned OCR PDFs
-- 🗣️ Voice input and multi-language summaries
-- 💬 Conversation memory across sessions
-- 📤 Export summaries and Q&A logs to PDF or Markdown
-
----
-
-## 📝 Evaluation Alignment
-
-| Criteria                          | Implementation Highlights                               |
-|-----------------------------------|----------------------------------------------------------|
-| ✔️ Accuracy + Justification       | Answers grounded in doc with citation                   |
-| ✔️ Reasoning Mode                 | Auto Q&A + logic evaluation in "Challenge Me" mode      |
-| ✔️ Clean UI/UX                    | Streamlit interface with minimal friction               |
-| ✔️ Code Quality                   | Modular FastAPI + frontend/backend separation           |
-| ✔️ Bonus Features                 | Memory + snippet highlighting support                   |
-| ✔️ Contextual Awareness           | Uses FAISS and LangChain to maintain document context   |
 
 ## 📸 Screenshots
-  **Landing Page**
-  
-  <<img width="1198" height="798" alt="image" src="https://github.com/user-attachments/assets/b2c55029-9da2-483c-8ea5-38546330c9b1" />
 
-  **Summary**
-  
-<img width="1119" height="718" alt="image" src="https://github.com/user-attachments/assets/41a6da75-9f06-421d-af97-c39e88274a74" />
+<details>
+<summary>Click to expand</summary>
 
+### Landing Page
+![Landing Page](https://github.com/user-attachments/assets/b2c55029-9da2-483c-8ea5-38546330c9b1)
 
-  
-  **Ask Question**
-  
-<img width="1450" height="833" alt="image" src="https://github.com/user-attachments/assets/fc358366-4e88-4352-aa4d-07436fc03ee5" />
+### Auto Summary
+![Summary](https://github.com/user-attachments/assets/41a6da75-9f06-421d-af97-c39e88274a74)
 
-  
-  **Self Evaluation Quiz**
-  
-  <img width="959" height="452" alt="SelfEvalQues" src="https://github.com/user-attachments/assets/93292ddb-6a4a-4467-8983-5c89440ae4db" />
+### Ask Anything Mode
+![Ask Question](https://github.com/user-attachments/assets/fc358366-4e88-4352-aa4d-07436fc03ee5)
 
-  
-  **Evaluation of Quiz Reasoning**
+### Challenge Me — Questions
+![Self Eval Questions](https://github.com/user-attachments/assets/93292ddb-6a4a-4467-8983-5c89440ae4db)
 
-  <img width="1406" height="697" alt="image" src="https://github.com/user-attachments/assets/25616208-6b3d-4f3b-b483-c416cb580a12" />
+### Challenge Me — Reasoning Evaluation
+![Evaluation Reasoning](https://github.com/user-attachments/assets/25616208-6b3d-4f3b-b483-c416cb580a12)
 
-  
-  **Self Evaluation Score**
+### Challenge Me — Final Score
+![Evaluation Score](https://github.com/user-attachments/assets/607ff44d-c4e1-443b-b9e4-7a8cca8430c2)
 
-  <img width="1396" height="797" alt="image" src="https://github.com/user-attachments/assets/607ff44d-c4e1-443b-b9e4-7a8cca8430c2" />
+</details>
 
+---
 
+## 🗺 Roadmap
 
+- [x] PDF and TXT document support
+- [x] Auto summary generation
+- [x] Natural language Q&A with citations
+- [x] Challenge Me mode with reasoning evaluation
+- [x] Context memory for follow-up queries
+- [ ] Support for `.docx` and scanned OCR PDFs
+- [ ] Voice input support
+- [ ] Multi-language summaries
+- [ ] Export Q&A logs to PDF or Markdown
+- [ ] Conversation memory across sessions
 
-**👨‍💻 Sangam Kumar**  
+---
 
- Email: [info.sangamgupta@gmail.com](mailto:info.sangamgupta@gmail.com)  
- 
-GitHub: [sangam962895](https://github.com/sangam962895)
+## 👨‍💻 Author
 
-© 2025 — Smart Assistant Project
+**Sangam Kumar**
 
-SmartDoc-AI smarter. Learn deeper. 🚀
+[![Gmail](https://img.shields.io/badge/Gmail-info.sangamgupta%40gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:info.sangamgupta@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-sangam962895-181717?style=flat&logo=github&logoColor=white)](https://github.com/sangam962895)
+
+---
+
+<div align="center">
+  <sub>© 2025 SmartDoc-AI — Read smarter. Learn deeper. 🚀</sub>
+</div>
