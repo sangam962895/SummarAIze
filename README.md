@@ -141,7 +141,6 @@ Create a `.env` file in the root directory:
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
-
 **5. Run the app**
 ```bash
 streamlit run frontend/streamlit_app.py
